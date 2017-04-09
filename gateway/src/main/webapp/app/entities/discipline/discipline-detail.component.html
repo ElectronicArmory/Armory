@@ -1,0 +1,39 @@
+
+<div *ngIf="discipline">
+    <h2><span jhiTranslate="armoryApp.discipline.detail.title">Discipline</span> {{discipline.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt><span jhiTranslate="armoryApp.discipline.disciplineName">Discipline Name</span></dt>
+        <dd>
+            <span>{{discipline.disciplineName}}</span>
+        </dd>
+        <dt><span jhiTranslate="armoryApp.discipline.disciplineDescription">Discipline Description</span></dt>
+        <dd>
+            <span>{{discipline.disciplineDescription}}</span>
+        </dd>
+        <dt><span jhiTranslate="armoryApp.discipline.disciplinePrice">Discipline Price</span></dt>
+        <dd>
+            <span>{{discipline.disciplinePrice}}</span>
+        </dd>
+        <dt><span jhiTranslate="armoryApp.discipline.programs">Programs</span></dt>
+        <dd>
+            <span *ngFor="let programs of discipline.programs; let last = last">
+                <a [routerLink]="['/program', programs?.id ]">{{programs.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'discipline/'+ discipline.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

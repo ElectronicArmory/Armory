@@ -1,0 +1,25 @@
+{
+    "armoryApp": {
+        "lesson" : {
+            "home": {
+                "title": "Lessons",
+                "createLabel": "Lesson erstellen",
+                "createOrEditLabel": "Lesson erstellen oder bearbeiten"
+            },
+            "created": "Lesson erstellt mit ID {{ param }}",
+            "updated": "Lesson aktualisiert mit ID {{ param }}",
+            "deleted": "Lesson gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Lesson {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Lesson"
+            },
+            "lessonTitle": "Lesson Title",
+            "lessonDescription": "Lesson Description",
+            "language": "Language",
+            "resources": "Resources",
+            "courses": "Courses"
+        }
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "armoryApp": {
+        "resource" : {
+            "home": {
+                "title": "Resources",
+                "createLabel": "Egy új Resource létrehozása",
+                "createOrEditLabel": "Hozzon létre, vagy módosítson Resourcet"
+            },
+            "created": "A new Resource is created with identifier {{ param }}",
+            "updated": "A Resource is updated with identifier {{ param }}",
+            "deleted": "A Resource is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Biztos benne, hogy törölni szeretné az Resourcet {{ id }} azonosítóval?"
+            },
+            "detail": {
+                "title": "Resource"
+            },
+            "resourceName": "Resource Name",
+            "resourceDescription": "Resource Description",
+            "resourceURL": "Resource URL",
+            "resourcePreviewImage": "Resource Preview Image",
+            "resourceType": "Resource Type",
+            "weight": "Weight",
+            "discipline": "Discipline",
+            "program": "Program",
+            "course": "Course",
+            "lesson": "Lesson"
+        }
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "armoryApp": {
+        "Level" : {
+            "null": "",
+            "NOVICE": "NOVICE",
+            "BEGINNER": "BEGINNER",
+            "INTERMEDIATE": "INTERMEDIATE",
+            "ADVANCED": "ADVANCED",
+            "PROFESSIONAL": "PROFESSIONAL"
+        }
+    }
+}

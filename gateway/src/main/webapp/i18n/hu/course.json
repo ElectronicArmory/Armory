@@ -1,0 +1,27 @@
+{
+    "armoryApp": {
+        "course" : {
+            "home": {
+                "title": "Courses",
+                "createLabel": "Egy új Course létrehozása",
+                "createOrEditLabel": "Hozzon létre, vagy módosítson Courset"
+            },
+            "created": "A new Course is created with identifier {{ param }}",
+            "updated": "A Course is updated with identifier {{ param }}",
+            "deleted": "A Course is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Biztos benne, hogy törölni szeretné az Courset {{ id }} azonosítóval?"
+            },
+            "detail": {
+                "title": "Course"
+            },
+            "courseTitle": "Course Title",
+            "courseDescription": "Course Description",
+            "coursePrice": "Course Price",
+            "courseLevel": "Course Level",
+            "resources": "Resources",
+            "lessons": "Lessons",
+            "programs": "Programs"
+        }
+    }
+}

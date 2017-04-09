@@ -1,0 +1,31 @@
+{
+    "health": {
+        "title": "Rendszer ellenőrzések",
+        "refresh.button": "Frissítés",
+        "stacktrace": "Stacktrace",
+        "details": {
+            "details": "Details",
+            "properties": "Properties",
+            "name": "Name",
+            "value": "Value",
+            "error": "Error"
+        },
+        "indicator": {
+            "discoveryComposite": "Discovery Composite",
+            "refreshScope": "Microservice Refresh Scope",
+            "configServer": "Microservice Config Server",
+            "hystrix": "Hystrix",
+            "diskSpace": "Szabad hely a diszken",
+            "mail": "Email",
+            "db": "Adatbázis"
+        },
+        "table": {
+            "service": "Szervíz neve",
+            "status": "Státusz"
+        },
+        "status": {
+            "UP": "MŰKÖDIK",
+            "DOWN": "NEM MŰKÖDIK"
+        }
+    }
+}

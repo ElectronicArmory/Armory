@@ -1,0 +1,25 @@
+{
+    "armoryApp": {
+        "lesson" : {
+            "home": {
+                "title": "Lessons",
+                "createLabel": "Egy új Lesson létrehozása",
+                "createOrEditLabel": "Hozzon létre, vagy módosítson Lessont"
+            },
+            "created": "A new Lesson is created with identifier {{ param }}",
+            "updated": "A Lesson is updated with identifier {{ param }}",
+            "deleted": "A Lesson is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Biztos benne, hogy törölni szeretné az Lessont {{ id }} azonosítóval?"
+            },
+            "detail": {
+                "title": "Lesson"
+            },
+            "lessonTitle": "Lesson Title",
+            "lessonDescription": "Lesson Description",
+            "language": "Language",
+            "resources": "Resources",
+            "courses": "Courses"
+        }
+    }
+}

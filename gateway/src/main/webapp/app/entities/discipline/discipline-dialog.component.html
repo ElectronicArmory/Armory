@@ -1,0 +1,57 @@
+
+
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+        <h4 class="modal-title" id="myDisciplineLabel" jhiTranslate="armoryApp.discipline.home.createOrEditLabel">Create or edit a Discipline</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!discipline.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="discipline.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="armoryApp.discipline.disciplineName" for="field_disciplineName">Discipline Name</label>
+            <input type="text" class="form-control" name="disciplineName" id="field_disciplineName"
+                [(ngModel)]="discipline.disciplineName"
+            required />
+            <div [hidden]="!(editForm.controls.disciplineName?.dirty && editForm.controls.disciplineName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.disciplineName?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="armoryApp.discipline.disciplineDescription" for="field_disciplineDescription">Discipline Description</label>
+            <input type="text" class="form-control" name="disciplineDescription" id="field_disciplineDescription"
+                [(ngModel)]="discipline.disciplineDescription"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="armoryApp.discipline.disciplinePrice" for="field_disciplinePrice">Discipline Price</label>
+            <input type="number" class="form-control" name="disciplinePrice" id="field_disciplinePrice"
+                [(ngModel)]="discipline.disciplinePrice"
+             />
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="armoryApp.discipline.programs" for="field_programs">Programs</label>
+            <select class="form-control" id="field_programs" #programs="ngModel" multiple name="programs" [(ngModel)]="discipline.programs">
+                <option [ngValue]="getSelected(discipline.programs, programOption)" *ngFor="let programOption of programs; trackBy: trackProgramById">{{programOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

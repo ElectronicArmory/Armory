@@ -1,0 +1,30 @@
+{
+    "armoryApp": {
+        "resource" : {
+            "home": {
+                "title": "Resources",
+                "createLabel": "Crear nuevo Resource",
+                "createOrEditLabel": "Crear o editar Resource"
+            },
+            "created": "Un nuevo Resource ha sido creado con el identificador {{ param }}",
+            "updated": "Un Resource ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Resource ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Resource {{ id }}?"
+            },
+            "detail": {
+                "title": "Resource"
+            },
+            "resourceName": "Resource Name",
+            "resourceDescription": "Resource Description",
+            "resourceURL": "Resource URL",
+            "resourcePreviewImage": "Resource Preview Image",
+            "resourceType": "Resource Type",
+            "weight": "Weight",
+            "discipline": "Discipline",
+            "program": "Program",
+            "course": "Course",
+            "lesson": "Lesson"
+        }
+    }
+}
