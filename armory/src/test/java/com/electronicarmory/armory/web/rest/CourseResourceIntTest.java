@@ -96,10 +96,10 @@ public class CourseResourceIntTest {
      */
     public static Course createEntity(EntityManager em) {
         Course course = new Course()
-                .courseTitle(DEFAULT_COURSE_TITLE)
-                .courseDescription(DEFAULT_COURSE_DESCRIPTION)
-                .coursePrice(DEFAULT_COURSE_PRICE)
-                .courseLevel(DEFAULT_COURSE_LEVEL);
+            .courseTitle(DEFAULT_COURSE_TITLE)
+            .courseDescription(DEFAULT_COURSE_DESCRIPTION)
+            .coursePrice(DEFAULT_COURSE_PRICE)
+            .courseLevel(DEFAULT_COURSE_LEVEL);
         return course;
     }
 
@@ -115,7 +115,6 @@ public class CourseResourceIntTest {
 
         // Create the Course
         CourseDTO courseDTO = courseMapper.courseToCourseDTO(course);
-
         restCourseMockMvc.perform(post("/api/courses")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(courseDTO)))
@@ -137,14 +136,13 @@ public class CourseResourceIntTest {
         int databaseSizeBeforeCreate = courseRepository.findAll().size();
 
         // Create the Course with an existing ID
-        Course existingCourse = new Course();
-        existingCourse.setId(1L);
-        CourseDTO existingCourseDTO = courseMapper.courseToCourseDTO(existingCourse);
+        course.setId(1L);
+        CourseDTO courseDTO = courseMapper.courseToCourseDTO(course);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restCourseMockMvc.perform(post("/api/courses")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(existingCourseDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(courseDTO)))
             .andExpect(status().isBadRequest());
 
         // Validate the Alice in the database
@@ -223,10 +221,10 @@ public class CourseResourceIntTest {
         // Update the course
         Course updatedCourse = courseRepository.findOne(course.getId());
         updatedCourse
-                .courseTitle(UPDATED_COURSE_TITLE)
-                .courseDescription(UPDATED_COURSE_DESCRIPTION)
-                .coursePrice(UPDATED_COURSE_PRICE)
-                .courseLevel(UPDATED_COURSE_LEVEL);
+            .courseTitle(UPDATED_COURSE_TITLE)
+            .courseDescription(UPDATED_COURSE_DESCRIPTION)
+            .coursePrice(UPDATED_COURSE_PRICE)
+            .courseLevel(UPDATED_COURSE_LEVEL);
         CourseDTO courseDTO = courseMapper.courseToCourseDTO(updatedCourse);
 
         restCourseMockMvc.perform(put("/api/courses")
@@ -281,6 +279,7 @@ public class CourseResourceIntTest {
     }
 
     @Test
+    @Transactional
     public void equalsVerifier() throws Exception {
         TestUtil.equalsVerifier(Course.class);
     }

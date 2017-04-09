@@ -88,12 +88,10 @@ public class LessonResource {
      *
      * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of lessons in body
-     * @throws URISyntaxException if there is an error to generate the pagination HTTP headers
      */
     @GetMapping("/lessons")
     @Timed
-    public ResponseEntity<List<LessonDTO>> getAllLessons(@ApiParam Pageable pageable)
-        throws URISyntaxException {
+    public ResponseEntity<List<LessonDTO>> getAllLessons(@ApiParam Pageable pageable) {
         log.debug("REST request to get a page of Lessons");
         Page<LessonDTO> page = lessonService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/lessons");

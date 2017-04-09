@@ -1,5 +1,5 @@
 # armory
-This application was generated using JHipster 4.0.3, you can find documentation and help at [https://jhipster.github.io/documentation-archive/v4.0.3](https://jhipster.github.io/documentation-archive/v4.0.3).
+This application was generated using JHipster 4.2.0, you can find documentation and help at [https://jhipster.github.io/documentation-archive/v4.2.0](https://jhipster.github.io/documentation-archive/v4.2.0).
 
 This is a "microservice" application intended to be part of a microservice architecture, please refer to the [Doing microservices with JHipster][] page of the documentation for more information.
 
@@ -35,7 +35,7 @@ To launch your application's tests, run:
     ./gradlew test
 ### Other tests
 
-Performance tests are run by [Gatling][] and written in Scala. They're located in `src/test/gatling` and can be run with:
+Performance tests are run by [Gatling][] and written in Scala. They're located in [src/test/gatling](src/test/gatling) and can be run with:
 
     ./gradlew gatlingRun
 
@@ -43,7 +43,7 @@ For more information, refer to the [Running tests page][].
 
 ## Using Docker to simplify development (optional)
 
-You can use Docker to improve your JHipster development experience. A number of docker-compose configuration are available in the `src/main/docker` folder to launch required third party services.
+You can use Docker to improve your JHipster development experience. A number of docker-compose configuration are available in the [src/main/docker](src/main/docker) folder to launch required third party services.
 For example, to start a mysql database in a docker container, run:
 
     docker-compose -f src/main/docker/mysql.yml up -d
@@ -65,16 +65,16 @@ For more information refer to [Using Docker and Docker-Compose][], this page als
 
 ## Continuous Integration (optional)
 
-To set up a CI environment, consult the [Setting up Continuous Integration][] page.
+To configure CI for your project, run the ci-cd sub-generator (`yo jhipster:ci-cd`), this will let you generate configuration files for a number of Continuous Integration systems. Consult the [Setting up Continuous Integration][] page for more information.
 
 [JHipster Homepage and latest documentation]: https://jhipster.github.io
-[JHipster 4.0.3 archive]: https://jhipster.github.io/documentation-archive/v4.0.3
-[Doing microservices with JHipster]: https://jhipster.github.io/documentation-archive/v4.0.3/microservices-architecture/
-[Using JHipster in development]: https://jhipster.github.io/documentation-archive/v4.0.3/development/
-[Service Discovery and Configuration with Consul]: https://jhipster.github.io/documentation-archive/v4.0.3/microservices-architecture/#consul
-[Using Docker and Docker-Compose]: https://jhipster.github.io/documentation-archive/v4.0.3/docker-compose
-[Using JHipster in production]: https://jhipster.github.io/documentation-archive/v4.0.3/production/
-[Running tests page]: https://jhipster.github.io/documentation-archive/v4.0.3/running-tests/
-[Setting up Continuous Integration]: https://jhipster.github.io/documentation-archive/v4.0.3/setting-up-ci/
+[JHipster 4.2.0 archive]: https://jhipster.github.io/documentation-archive/v4.2.0
+[Doing microservices with JHipster]: https://jhipster.github.io/documentation-archive/v4.2.0/microservices-architecture/
+[Using JHipster in development]: https://jhipster.github.io/documentation-archive/v4.2.0/development/
+[Service Discovery and Configuration with Consul]: https://jhipster.github.io/documentation-archive/v4.2.0/microservices-architecture/#consul
+[Using Docker and Docker-Compose]: https://jhipster.github.io/documentation-archive/v4.2.0/docker-compose
+[Using JHipster in production]: https://jhipster.github.io/documentation-archive/v4.2.0/production/
+[Running tests page]: https://jhipster.github.io/documentation-archive/v4.2.0/running-tests/
+[Setting up Continuous Integration]: https://jhipster.github.io/documentation-archive/v4.2.0/setting-up-ci/
 
 [Gatling]: http://gatling.io/

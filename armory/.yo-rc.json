@@ -1,6 +1,6 @@
 {
   "generator-jhipster": {
-    "jhipsterVersion": "4.0.3",
+    "jhipsterVersion": "4.2.0",
     "baseName": "armory",
     "packageName": "com.electronicarmory.armory",
     "packageFolder": "com/electronicarmory/armory",

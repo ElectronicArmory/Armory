@@ -24,6 +24,8 @@
 #                        timeoutInMilliseconds: 10000
 
 management:
+    security:
+        roles: ADMIN
     context-path: /management
     health:
         mail:
@@ -35,7 +37,7 @@ spring:
         consul:
             discovery:
                 healthCheckPath: /management/health
-                instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+                instanceId: ${spring.application.name}:${spring.application.instance-id:${random.value}}
     jackson:
         serialization.write_dates_as_timestamps: false
     jpa:
@@ -61,6 +63,7 @@ server:
     session:
         cookie:
             http-only: true
+
 
 # ===================================================================
 # JHipster specific properties

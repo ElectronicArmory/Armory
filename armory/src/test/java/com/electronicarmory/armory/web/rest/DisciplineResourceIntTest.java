@@ -92,9 +92,9 @@ public class DisciplineResourceIntTest {
      */
     public static Discipline createEntity(EntityManager em) {
         Discipline discipline = new Discipline()
-                .disciplineName(DEFAULT_DISCIPLINE_NAME)
-                .disciplineDescription(DEFAULT_DISCIPLINE_DESCRIPTION)
-                .disciplinePrice(DEFAULT_DISCIPLINE_PRICE);
+            .disciplineName(DEFAULT_DISCIPLINE_NAME)
+            .disciplineDescription(DEFAULT_DISCIPLINE_DESCRIPTION)
+            .disciplinePrice(DEFAULT_DISCIPLINE_PRICE);
         return discipline;
     }
 
@@ -110,7 +110,6 @@ public class DisciplineResourceIntTest {
 
         // Create the Discipline
         DisciplineDTO disciplineDTO = disciplineMapper.disciplineToDisciplineDTO(discipline);
-
         restDisciplineMockMvc.perform(post("/api/disciplines")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(disciplineDTO)))
@@ -131,14 +130,13 @@ public class DisciplineResourceIntTest {
         int databaseSizeBeforeCreate = disciplineRepository.findAll().size();
 
         // Create the Discipline with an existing ID
-        Discipline existingDiscipline = new Discipline();
-        existingDiscipline.setId(1L);
-        DisciplineDTO existingDisciplineDTO = disciplineMapper.disciplineToDisciplineDTO(existingDiscipline);
+        discipline.setId(1L);
+        DisciplineDTO disciplineDTO = disciplineMapper.disciplineToDisciplineDTO(discipline);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restDisciplineMockMvc.perform(post("/api/disciplines")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(existingDisciplineDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(disciplineDTO)))
             .andExpect(status().isBadRequest());
 
         // Validate the Alice in the database
@@ -215,9 +213,9 @@ public class DisciplineResourceIntTest {
         // Update the discipline
         Discipline updatedDiscipline = disciplineRepository.findOne(discipline.getId());
         updatedDiscipline
-                .disciplineName(UPDATED_DISCIPLINE_NAME)
-                .disciplineDescription(UPDATED_DISCIPLINE_DESCRIPTION)
-                .disciplinePrice(UPDATED_DISCIPLINE_PRICE);
+            .disciplineName(UPDATED_DISCIPLINE_NAME)
+            .disciplineDescription(UPDATED_DISCIPLINE_DESCRIPTION)
+            .disciplinePrice(UPDATED_DISCIPLINE_PRICE);
         DisciplineDTO disciplineDTO = disciplineMapper.disciplineToDisciplineDTO(updatedDiscipline);
 
         restDisciplineMockMvc.perform(put("/api/disciplines")
@@ -271,6 +269,7 @@ public class DisciplineResourceIntTest {
     }
 
     @Test
+    @Transactional
     public void equalsVerifier() throws Exception {
         TestUtil.equalsVerifier(Discipline.class);
     }
