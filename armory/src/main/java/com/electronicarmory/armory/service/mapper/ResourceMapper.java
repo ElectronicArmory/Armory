@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Mapper for the entity Resource and its DTO ResourceDTO.
  */
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {DisciplineMapper.class, ProgramMapper.class, CourseMapper.class, LessonMapper.class, })
 public interface ResourceMapper {
 
     @Mapping(source = "discipline.id", target = "disciplineId")
@@ -27,40 +27,22 @@ public interface ResourceMapper {
     Resource resourceDTOToResource(ResourceDTO resourceDTO);
 
     List<Resource> resourceDTOsToResources(List<ResourceDTO> resourceDTOs);
-
-    default Discipline disciplineFromId(Long id) {
+    /**
+     * generating the fromId for all mappers if the databaseType is sql, as the class has relationship to it might need it, instead of
+     * creating a new attribute to know if the entity has any relationship from some other entity
+     *
+     * @param id id of the entity
+     * @return the entity instance
+     */
+     
+    default Resource resourceFromId(Long id) {
         if (id == null) {
             return null;
         }
-        Discipline discipline = new Discipline();
-        discipline.setId(id);
-        return discipline;
+        Resource resource = new Resource();
+        resource.setId(id);
+        return resource;
     }
+    
 
-    default Program programFromId(Long id) {
-        if (id == null) {
-            return null;
-        }
-        Program program = new Program();
-        program.setId(id);
-        return program;
-    }
-
-    default Course courseFromId(Long id) {
-        if (id == null) {
-            return null;
-        }
-        Course course = new Course();
-        course.setId(id);
-        return course;
-    }
-
-    default Lesson lessonFromId(Long id) {
-        if (id == null) {
-            return null;
-        }
-        Lesson lesson = new Lesson();
-        lesson.setId(id);
-        return lesson;
-    }
 }

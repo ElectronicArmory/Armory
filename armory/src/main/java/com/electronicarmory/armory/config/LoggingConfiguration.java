@@ -21,18 +21,19 @@ public class LoggingConfiguration {
 
     private LoggerContext context = (LoggerContext) LoggerFactory.getILoggerFactory();
 
-    @Value("${spring.application.name}")
-    private String appName;
+    private final String appName;
 
-    @Value("${server.port}")
-    private String serverPort;
+    private final String serverPort;
 
-    @Value("${spring.cloud.consul.discovery.instanceId}")
-    private String instanceId;
+    private final String instanceId;
 
     private final JHipsterProperties jHipsterProperties;
 
-    public LoggingConfiguration(JHipsterProperties jHipsterProperties) {
+    public LoggingConfiguration(@Value("${spring.application.name}") String appName, @Value("${server.port}") String serverPort,
+        @Value("${spring.cloud.consul.discovery.instanceId}") String instanceId, JHipsterProperties jHipsterProperties) {
+        this.appName = appName;
+        this.serverPort = serverPort;
+        this.instanceId = instanceId;
         this.jHipsterProperties = jHipsterProperties;
         if (jHipsterProperties.getLogging().getLogstash().isEnabled()) {
             addLogstashAppender(context);
@@ -76,7 +77,6 @@ public class LoggingConfiguration {
 
         context.getLogger("ROOT").addAppender(asyncLogstashAppender);
     }
-
 
     /**
      * Logback configuration is achieved by configuration file and API.

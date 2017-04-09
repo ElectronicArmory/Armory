@@ -20,13 +20,22 @@ public interface DisciplineMapper {
     Discipline disciplineDTOToDiscipline(DisciplineDTO disciplineDTO);
 
     List<Discipline> disciplineDTOsToDisciplines(List<DisciplineDTO> disciplineDTOs);
-
-    default Program programFromId(Long id) {
+    /**
+     * generating the fromId for all mappers if the databaseType is sql, as the class has relationship to it might need it, instead of
+     * creating a new attribute to know if the entity has any relationship from some other entity
+     *
+     * @param id id of the entity
+     * @return the entity instance
+     */
+     
+    default Discipline disciplineFromId(Long id) {
         if (id == null) {
             return null;
         }
-        Program program = new Program();
-        program.setId(id);
-        return program;
+        Discipline discipline = new Discipline();
+        discipline.setId(id);
+        return discipline;
     }
+    
+
 }

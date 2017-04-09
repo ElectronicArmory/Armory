@@ -21,13 +21,22 @@ public interface CourseMapper {
     Course courseDTOToCourse(CourseDTO courseDTO);
 
     List<Course> courseDTOsToCourses(List<CourseDTO> courseDTOs);
-
-    default Lesson lessonFromId(Long id) {
+    /**
+     * generating the fromId for all mappers if the databaseType is sql, as the class has relationship to it might need it, instead of
+     * creating a new attribute to know if the entity has any relationship from some other entity
+     *
+     * @param id id of the entity
+     * @return the entity instance
+     */
+     
+    default Course courseFromId(Long id) {
         if (id == null) {
             return null;
         }
-        Lesson lesson = new Lesson();
-        lesson.setId(id);
-        return lesson;
+        Course course = new Course();
+        course.setId(id);
+        return course;
     }
+    
+
 }

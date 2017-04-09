@@ -93,9 +93,9 @@ public class LessonResourceIntTest {
      */
     public static Lesson createEntity(EntityManager em) {
         Lesson lesson = new Lesson()
-                .lessonTitle(DEFAULT_LESSON_TITLE)
-                .lessonDescription(DEFAULT_LESSON_DESCRIPTION)
-                .language(DEFAULT_LANGUAGE);
+            .lessonTitle(DEFAULT_LESSON_TITLE)
+            .lessonDescription(DEFAULT_LESSON_DESCRIPTION)
+            .language(DEFAULT_LANGUAGE);
         return lesson;
     }
 
@@ -111,7 +111,6 @@ public class LessonResourceIntTest {
 
         // Create the Lesson
         LessonDTO lessonDTO = lessonMapper.lessonToLessonDTO(lesson);
-
         restLessonMockMvc.perform(post("/api/lessons")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(lessonDTO)))
@@ -132,14 +131,13 @@ public class LessonResourceIntTest {
         int databaseSizeBeforeCreate = lessonRepository.findAll().size();
 
         // Create the Lesson with an existing ID
-        Lesson existingLesson = new Lesson();
-        existingLesson.setId(1L);
-        LessonDTO existingLessonDTO = lessonMapper.lessonToLessonDTO(existingLesson);
+        lesson.setId(1L);
+        LessonDTO lessonDTO = lessonMapper.lessonToLessonDTO(lesson);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restLessonMockMvc.perform(post("/api/lessons")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(existingLessonDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(lessonDTO)))
             .andExpect(status().isBadRequest());
 
         // Validate the Alice in the database
@@ -216,9 +214,9 @@ public class LessonResourceIntTest {
         // Update the lesson
         Lesson updatedLesson = lessonRepository.findOne(lesson.getId());
         updatedLesson
-                .lessonTitle(UPDATED_LESSON_TITLE)
-                .lessonDescription(UPDATED_LESSON_DESCRIPTION)
-                .language(UPDATED_LANGUAGE);
+            .lessonTitle(UPDATED_LESSON_TITLE)
+            .lessonDescription(UPDATED_LESSON_DESCRIPTION)
+            .language(UPDATED_LANGUAGE);
         LessonDTO lessonDTO = lessonMapper.lessonToLessonDTO(updatedLesson);
 
         restLessonMockMvc.perform(put("/api/lessons")
@@ -272,6 +270,7 @@ public class LessonResourceIntTest {
     }
 
     @Test
+    @Transactional
     public void equalsVerifier() throws Exception {
         TestUtil.equalsVerifier(Lesson.class);
     }

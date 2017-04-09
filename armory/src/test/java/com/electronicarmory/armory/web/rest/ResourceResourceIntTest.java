@@ -102,12 +102,12 @@ public class ResourceResourceIntTest {
      */
     public static Resource createEntity(EntityManager em) {
         Resource resource = new Resource()
-                .resourceName(DEFAULT_RESOURCE_NAME)
-                .resourceDescription(DEFAULT_RESOURCE_DESCRIPTION)
-                .resourceURL(DEFAULT_RESOURCE_URL)
-                .resourcePreviewImage(DEFAULT_RESOURCE_PREVIEW_IMAGE)
-                .resourceType(DEFAULT_RESOURCE_TYPE)
-                .weight(DEFAULT_WEIGHT);
+            .resourceName(DEFAULT_RESOURCE_NAME)
+            .resourceDescription(DEFAULT_RESOURCE_DESCRIPTION)
+            .resourceURL(DEFAULT_RESOURCE_URL)
+            .resourcePreviewImage(DEFAULT_RESOURCE_PREVIEW_IMAGE)
+            .resourceType(DEFAULT_RESOURCE_TYPE)
+            .weight(DEFAULT_WEIGHT);
         return resource;
     }
 
@@ -123,7 +123,6 @@ public class ResourceResourceIntTest {
 
         // Create the Resource
         ResourceDTO resourceDTO = resourceMapper.resourceToResourceDTO(resource);
-
         restResourceMockMvc.perform(post("/api/resources")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(resourceDTO)))
@@ -147,14 +146,13 @@ public class ResourceResourceIntTest {
         int databaseSizeBeforeCreate = resourceRepository.findAll().size();
 
         // Create the Resource with an existing ID
-        Resource existingResource = new Resource();
-        existingResource.setId(1L);
-        ResourceDTO existingResourceDTO = resourceMapper.resourceToResourceDTO(existingResource);
+        resource.setId(1L);
+        ResourceDTO resourceDTO = resourceMapper.resourceToResourceDTO(resource);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restResourceMockMvc.perform(post("/api/resources")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(existingResourceDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(resourceDTO)))
             .andExpect(status().isBadRequest());
 
         // Validate the Alice in the database
@@ -218,12 +216,12 @@ public class ResourceResourceIntTest {
         // Update the resource
         Resource updatedResource = resourceRepository.findOne(resource.getId());
         updatedResource
-                .resourceName(UPDATED_RESOURCE_NAME)
-                .resourceDescription(UPDATED_RESOURCE_DESCRIPTION)
-                .resourceURL(UPDATED_RESOURCE_URL)
-                .resourcePreviewImage(UPDATED_RESOURCE_PREVIEW_IMAGE)
-                .resourceType(UPDATED_RESOURCE_TYPE)
-                .weight(UPDATED_WEIGHT);
+            .resourceName(UPDATED_RESOURCE_NAME)
+            .resourceDescription(UPDATED_RESOURCE_DESCRIPTION)
+            .resourceURL(UPDATED_RESOURCE_URL)
+            .resourcePreviewImage(UPDATED_RESOURCE_PREVIEW_IMAGE)
+            .resourceType(UPDATED_RESOURCE_TYPE)
+            .weight(UPDATED_WEIGHT);
         ResourceDTO resourceDTO = resourceMapper.resourceToResourceDTO(updatedResource);
 
         restResourceMockMvc.perform(put("/api/resources")
@@ -280,6 +278,7 @@ public class ResourceResourceIntTest {
     }
 
     @Test
+    @Transactional
     public void equalsVerifier() throws Exception {
         TestUtil.equalsVerifier(Resource.class);
     }

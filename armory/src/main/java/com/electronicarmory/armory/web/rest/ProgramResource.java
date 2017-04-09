@@ -88,12 +88,10 @@ public class ProgramResource {
      *
      * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of programs in body
-     * @throws URISyntaxException if there is an error to generate the pagination HTTP headers
      */
     @GetMapping("/programs")
     @Timed
-    public ResponseEntity<List<ProgramDTO>> getAllPrograms(@ApiParam Pageable pageable)
-        throws URISyntaxException {
+    public ResponseEntity<List<ProgramDTO>> getAllPrograms(@ApiParam Pageable pageable) {
         log.debug("REST request to get a page of Programs");
         Page<ProgramDTO> page = programService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/programs");

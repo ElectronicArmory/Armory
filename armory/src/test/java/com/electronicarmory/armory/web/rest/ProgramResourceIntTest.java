@@ -92,9 +92,9 @@ public class ProgramResourceIntTest {
      */
     public static Program createEntity(EntityManager em) {
         Program program = new Program()
-                .programName(DEFAULT_PROGRAM_NAME)
-                .programDescription(DEFAULT_PROGRAM_DESCRIPTION)
-                .programPrice(DEFAULT_PROGRAM_PRICE);
+            .programName(DEFAULT_PROGRAM_NAME)
+            .programDescription(DEFAULT_PROGRAM_DESCRIPTION)
+            .programPrice(DEFAULT_PROGRAM_PRICE);
         return program;
     }
 
@@ -110,7 +110,6 @@ public class ProgramResourceIntTest {
 
         // Create the Program
         ProgramDTO programDTO = programMapper.programToProgramDTO(program);
-
         restProgramMockMvc.perform(post("/api/programs")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(programDTO)))
@@ -131,14 +130,13 @@ public class ProgramResourceIntTest {
         int databaseSizeBeforeCreate = programRepository.findAll().size();
 
         // Create the Program with an existing ID
-        Program existingProgram = new Program();
-        existingProgram.setId(1L);
-        ProgramDTO existingProgramDTO = programMapper.programToProgramDTO(existingProgram);
+        program.setId(1L);
+        ProgramDTO programDTO = programMapper.programToProgramDTO(program);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restProgramMockMvc.perform(post("/api/programs")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(existingProgramDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(programDTO)))
             .andExpect(status().isBadRequest());
 
         // Validate the Alice in the database
@@ -215,9 +213,9 @@ public class ProgramResourceIntTest {
         // Update the program
         Program updatedProgram = programRepository.findOne(program.getId());
         updatedProgram
-                .programName(UPDATED_PROGRAM_NAME)
-                .programDescription(UPDATED_PROGRAM_DESCRIPTION)
-                .programPrice(UPDATED_PROGRAM_PRICE);
+            .programName(UPDATED_PROGRAM_NAME)
+            .programDescription(UPDATED_PROGRAM_DESCRIPTION)
+            .programPrice(UPDATED_PROGRAM_PRICE);
         ProgramDTO programDTO = programMapper.programToProgramDTO(updatedProgram);
 
         restProgramMockMvc.perform(put("/api/programs")
@@ -271,6 +269,7 @@ public class ProgramResourceIntTest {
     }
 
     @Test
+    @Transactional
     public void equalsVerifier() throws Exception {
         TestUtil.equalsVerifier(Program.class);
     }
