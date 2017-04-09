@@ -21,7 +21,6 @@
     "useSass": true,
     "clientPackageManager": "yarn",
     "applicationType": "gateway",
-    "clientFramework": "angular2",
     "testFrameworks": [
       "gatling",
       "cucumber",
@@ -35,6 +34,7 @@
       "de",
       "hu",
       "es"
-    ]
+    ],
+    "clientFramework": "angular2"
   }
 }
