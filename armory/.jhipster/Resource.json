@@ -1,0 +1,61 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "discipline",
+            "otherEntityName": "discipline",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "program",
+            "otherEntityName": "program",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "course",
+            "otherEntityName": "course",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "lesson",
+            "otherEntityName": "lesson",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "resourceName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "resourceDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "resourceURL",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "resourcePreviewImage",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "resourceType",
+            "fieldType": "ResourceType",
+            "fieldValues": "VIDEO,IMAGE,TUTORIAL,PAGE,PARTIAL,TOOL"
+        },
+        {
+            "fieldName": "weight",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20170219054343",
+    "entityTableName": "resource",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl"
+}

@@ -1,0 +1,25 @@
+{
+    "armoryApp": {
+        "discipline" : {
+            "home": {
+                "title": "Disciplines",
+                "createLabel": "Egy új Discipline létrehozása",
+                "createOrEditLabel": "Hozzon létre, vagy módosítson Disciplinet"
+            },
+            "created": "A new Discipline is created with identifier {{ param }}",
+            "updated": "A Discipline is updated with identifier {{ param }}",
+            "deleted": "A Discipline is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Biztos benne, hogy törölni szeretné az Disciplinet {{ id }} azonosítóval?"
+            },
+            "detail": {
+                "title": "Discipline"
+            },
+            "disciplineName": "Discipline Name",
+            "disciplineDescription": "Discipline Description",
+            "disciplinePrice": "Discipline Price",
+            "resources": "Resources",
+            "programs": "Programs"
+        }
+    }
+}

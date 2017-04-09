@@ -1,0 +1,41 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "resources",
+            "otherEntityName": "resource",
+            "otherEntityRelationshipName": "lesson"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "courses",
+            "otherEntityName": "course",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "lessons"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "lessonTitle",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "lessonDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "language",
+            "fieldType": "Language",
+            "fieldValues": "ENGLISH,SPANISH,HUNGARIAN,GERMAN"
+        }
+    ],
+    "changelogDate": "20170219054456",
+    "entityTableName": "lesson",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl"
+}

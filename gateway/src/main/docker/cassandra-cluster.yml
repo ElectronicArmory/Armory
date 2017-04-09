@@ -1,0 +1,27 @@
+version: '2'
+services:
+    armory-cassandra:
+        container_name: armory-cassandra
+        image: cassandra:3.9
+        # volumes:
+        #     - ~/volumes/jhipster/armory/cassandra/:/var/lib/cassandra/data
+        ports:
+            - 7000:7000
+            - 7001:7001
+            - 7199:7199
+            - 9042:9042
+            - 9160:9160
+    armory-cassandra-node:
+        image: cassandra:3.9
+        links:
+            - armory-cassandra:seed
+        environment:
+            - CASSANDRA_SEEDS=seed
+    armory-cassandra-migration:
+        extends:
+            file: cassandra-migration.yml
+            service: armory-cassandra-migration
+        links:
+            - armory-cassandra
+        environment:
+            - CREATE_KEYSPACE_SCRIPT=create-keyspace-prod.cql

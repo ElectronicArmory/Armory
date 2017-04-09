@@ -1,0 +1,53 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "resources",
+            "otherEntityName": "resource",
+            "otherEntityRelationshipName": "course"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "courses",
+            "relationshipName": "lessons",
+            "otherEntityName": "lesson",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "programs",
+            "otherEntityName": "program",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "courses"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "courseTitle",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "courseDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "coursePrice",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "courseLevel",
+            "fieldType": "Level",
+            "fieldValues": "NOVICE,BEGINNER,INTERMEDIATE,ADVANCED,PROFESSIONAL"
+        }
+    ],
+    "changelogDate": "20170219054343",
+    "entityTableName": "course",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

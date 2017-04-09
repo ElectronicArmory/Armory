@@ -1,0 +1,67 @@
+<div>
+    <h2><span jhiTranslate="armoryApp.course.home.title">Courses</span>
+        <button class="btn btn-primary float-xs-right create-course" [routerLink]="['/', { outlets: { popup: ['course-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="armoryApp.course.home.createLabel">
+            Create new Course
+            </span>
+        </button></h2>
+    <jhi-alert></jhi-alert>
+
+    <div class="container-fluid">
+        <div class="row">
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="courses">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="courseTitle"><span jhiTranslate="armoryApp.course.courseTitle">Course Title</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="courseDescription"><span jhiTranslate="armoryApp.course.courseDescription">Course Description</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="coursePrice"><span jhiTranslate="armoryApp.course.coursePrice">Course Price</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="courseLevel"><span jhiTranslate="armoryApp.course.courseLevel">Course Level</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let course of courses ;trackBy: trackId">
+                <td><a [routerLink]="['../course', course.id ]">{{course.id}}</a></td>
+                <td>{{course.courseTitle}}</td>
+                <td>{{course.courseDescription}}</td>
+                <td>{{course.coursePrice}}</td>
+                <td jhiTranslate="{{'armoryApp.Level.' + course.courseLevel}}">{{course.courseLevel}}</td>
+                <td class="text-xs-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../course', course.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'course/'+ course.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'course/'+ course.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div class="text-xs-center" *ngIf="courses && courses.length">
+            <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+</div>

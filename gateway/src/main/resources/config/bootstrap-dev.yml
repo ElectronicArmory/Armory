@@ -1,0 +1,11 @@
+# ===================================================================
+# Spring Cloud Consul Config bootstrap configuration for the "dev" profile
+# ===================================================================
+
+spring:
+    cloud:
+        consul:
+            config:
+                fail-fast: true
+                format: yaml
+                profile-separator: "-"

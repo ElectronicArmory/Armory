@@ -1,0 +1,39 @@
+
+<div *ngIf="program">
+    <h2><span jhiTranslate="armoryApp.program.detail.title">Program</span> {{program.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt><span jhiTranslate="armoryApp.program.programName">Program Name</span></dt>
+        <dd>
+            <span>{{program.programName}}</span>
+        </dd>
+        <dt><span jhiTranslate="armoryApp.program.programDescription">Program Description</span></dt>
+        <dd>
+            <span>{{program.programDescription}}</span>
+        </dd>
+        <dt><span jhiTranslate="armoryApp.program.programPrice">Program Price</span></dt>
+        <dd>
+            <span>{{program.programPrice}}</span>
+        </dd>
+        <dt><span jhiTranslate="armoryApp.program.courses">Courses</span></dt>
+        <dd>
+            <span *ngFor="let courses of program.courses; let last = last">
+                <a [routerLink]="['/course', courses?.id ]">{{courses.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'program/'+ program.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

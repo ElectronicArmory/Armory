@@ -1,0 +1,33 @@
+
+<div *ngIf="lesson">
+    <h2><span jhiTranslate="armoryApp.lesson.detail.title">Lesson</span> {{lesson.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row">
+        <dt><span jhiTranslate="armoryApp.lesson.lessonTitle">Lesson Title</span></dt>
+        <dd>
+            <span>{{lesson.lessonTitle}}</span>
+        </dd>
+        <dt><span jhiTranslate="armoryApp.lesson.lessonDescription">Lesson Description</span></dt>
+        <dd>
+            <span>{{lesson.lessonDescription}}</span>
+        </dd>
+        <dt><span jhiTranslate="armoryApp.lesson.language">Language</span></dt>
+        <dd>
+            <span jhiTranslate="{{'armoryApp.Language.' + lesson.language}}">{{lesson.language}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'lesson/'+ lesson.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

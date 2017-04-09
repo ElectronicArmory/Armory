@@ -1,0 +1,41 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "resources",
+            "otherEntityName": "resource",
+            "otherEntityRelationshipName": "discipline"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "disciplines",
+            "relationshipName": "programs",
+            "otherEntityName": "program",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "disciplineName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "disciplineDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "disciplinePrice",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20170219054343",
+    "entityTableName": "discipline",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl"
+}

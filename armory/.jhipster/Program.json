@@ -1,0 +1,48 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "resources",
+            "otherEntityName": "resource",
+            "otherEntityRelationshipName": "program"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "programs",
+            "relationshipName": "courses",
+            "otherEntityName": "course",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "disciplines",
+            "otherEntityName": "discipline",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "programs"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "programName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "programDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "programPrice",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20170219054343",
+    "entityTableName": "program",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}
