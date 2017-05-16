@@ -1,6 +1,7 @@
 package com.electronicarmory.armory.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.electronicarmory.armory.security.SecurityUtils;
 import com.electronicarmory.armory.service.DisciplineService;
 import com.electronicarmory.armory.web.rest.util.HeaderUtil;
 import com.electronicarmory.armory.service.dto.DisciplineDTO;
@@ -18,6 +19,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static com.electronicarmory.armory.security.AuthoritiesConstants.ADMIN;
+
 /**
  * REST controller for managing Discipline.
  */
@@ -28,7 +31,7 @@ public class DisciplineResource {
     private final Logger log = LoggerFactory.getLogger(DisciplineResource.class);
 
     private static final String ENTITY_NAME = "discipline";
-        
+
     private final DisciplineService disciplineService;
 
     public DisciplineResource(DisciplineService disciplineService) {
@@ -45,6 +48,10 @@ public class DisciplineResource {
     @PostMapping("/disciplines")
     @Timed
     public ResponseEntity<DisciplineDTO> createDiscipline(@Valid @RequestBody DisciplineDTO disciplineDTO) throws URISyntaxException {
+
+        if (!SecurityUtils.isCurrentUserInRole(ADMIN)) {
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "not-authenticated", "You need to be logged in to perform this action.")).body(null);
+        }
         log.debug("REST request to save Discipline : {}", disciplineDTO);
         if (disciplineDTO.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new discipline cannot already have an ID")).body(null);
